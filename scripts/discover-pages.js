@@ -7,11 +7,18 @@ function filePathToRoute(filePath) {
     const relativePath = path.relative("src/pages", filePath);
     const routePath = relativePath
         .replace(/\.(tsx?|jsx?)$/, "") // Remove .tsx, .ts, .jsx, .js extensions
+        .replace(/\/index$/, "") // Remove /index from the end
         .replace(/^index$/, "") // Convert index to empty string
         .replace(/\/$/, "/") // Ensure trailing slash for root
         .replace(/^$/, "/"); // Empty string becomes root
 
     return routePath === "/" ? "/" : `/${routePath}`;
+}
+
+// Convert file path to component path (including folder structure)
+function filePathToComponent(filePath) {
+    const relativePath = path.relative("src/pages", filePath);
+    return relativePath;
 }
 
 // Convert route path to page title
@@ -36,10 +43,11 @@ async function discoverPages() {
 
         for (const filePath of pageFiles) {
             const routePath = filePathToRoute(filePath);
+            const component = filePathToComponent(filePath);
             const title = routeToTitle(routePath);
 
             pages[routePath] = {
-                component: path.basename(filePath),
+                component,
                 title,
                 path: routePath,
             };
@@ -61,7 +69,9 @@ async function discoverPages() {
         });
 
         console.log("✅ Discovered pages:", Object.keys(pages));
-        console.log("📁 Routes manifest generated at src/routes-manifest.json");
+        console.log(
+            "📁 Routes manifest generated at src/router/routes-manifest.json",
+        );
 
         return manifest;
     } catch (error) {

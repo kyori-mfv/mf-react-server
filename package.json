@@ -4,7 +4,7 @@
     "type": "module",
     "main": "index.js",
     "scripts": {
-        "discover": "node scripts/discover-pages.js",
+        "discover": "node scripts/discover-pages.js && npm run format",
         "build:client": "webpack --config webpack.client.config.js",
         "build:server": "webpack --config webpack.server.config.js",
         "build": "npm run discover && npm run build:client && npm run build:server",

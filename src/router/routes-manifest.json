@@ -19,9 +19,26 @@
             "component": "about.tsx",
             "title": "About",
             "path": "/about"
+        },
+        "/dashboard/stats": {
+            "component": "dashboard/stats.tsx",
+            "title": "Dashboard Stats",
+            "path": "/dashboard/stats"
+        },
+        "/dashboard": {
+            "component": "dashboard/index.tsx",
+            "title": "Dashboard",
+            "path": "/dashboard"
         }
     },
-    "routes": ["/", "/contact", "/blog", "/about"],
+    "routes": [
+        "/",
+        "/contact",
+        "/blog",
+        "/about",
+        "/dashboard/stats",
+        "/dashboard"
+    ],
     "navigation": [
         {
             "title": "Home",
@@ -38,6 +55,14 @@
         {
             "title": "About",
             "path": "/about"
+        },
+        {
+            "title": "Dashboard Stats",
+            "path": "/dashboard/stats"
+        },
+        {
+            "title": "Dashboard",
+            "path": "/dashboard"
         }
     ]
 }
