@@ -20,16 +20,12 @@ export interface AppProps {
 }
 
 export interface PageComponentProps {
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 export interface ServerInitialProps {
     page: string;
 }
 
-// Page alias types
-export type PageAlias = 'home' | 'about' | 'contact' | 'blog';
-export type RoutePath = '/' | '/about' | '/contact' | '/blog';
-
 // Page component type
-export type PageComponent = React.ComponentType<any>;
+export type PageComponent = React.ComponentType<PageComponentProps>;

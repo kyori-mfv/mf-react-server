@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
 import { getPageComponent, getNavigationData } from "./router/manifest-router";
-import { AppProps, NavigationItem } from "./types";
+import { AppProps, NavigationItem, PageComponentProps } from "./types";
 
-export default function App({ initialCount, serverTime, page, aboutData }: AppProps) {
-    const [PageComponent, setPageComponent] = React.useState<React.ComponentType<any> | null>(null);
+export default function App({ page }: AppProps) {
+    const [PageComponent, setPageComponent] =
+        React.useState<React.ComponentType<PageComponentProps> | null>(null);
     const [loading, setLoading] = React.useState(false);
-    const [currentPage, _] = React.useState(page);
+    const [currentPage] = React.useState(page);
 
     React.useEffect(() => {
         const loadPage = async () => {
@@ -55,7 +56,13 @@ export default function App({ initialCount, serverTime, page, aboutData }: AppPr
 
     return (
         <div style={{ fontFamily: "sans-serif", padding: 20 }}>
-            <nav style={{ marginBottom: 20, borderBottom: "1px solid #ccc", paddingBottom: 10 }}>
+            <nav
+                style={{
+                    marginBottom: 20,
+                    borderBottom: "1px solid #ccc",
+                    paddingBottom: 10,
+                }}
+            >
                 {navigationData.map((navItem: NavigationItem) => (
                     <a
                         key={navItem.path}
@@ -63,7 +70,9 @@ export default function App({ initialCount, serverTime, page, aboutData }: AppPr
                         style={{
                             marginRight: 20,
                             textDecoration: "none",
-                            color: isActivePage(navItem.path) ? "#007bff" : "#333"
+                            color: isActivePage(navItem.path)
+                                ? "#007bff"
+                                : "#333",
                         }}
                     >
                         {navItem.title}

@@ -1,11 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES2020",
-        "lib": [
-            "ES2020",
-            "DOM",
-            "DOM.Iterable"
-        ],
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
@@ -21,33 +17,14 @@
         "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
-            "@/*": [
-                "src/*"
-            ],
-            "@/pages/*": [
-                "src/pages/*"
-            ],
-            "@/components/*": [
-                "src/components/*"
-            ],
-            "@/types/*": [
-                "src/types/*"
-            ],
-            "@/router/*": [
-                "src/router/*"
-            ],
-            "@/utils/*": [
-                "src/utils/*"
-            ]
+            "@/*": ["src/*"],
+            "@/pages/*": ["src/pages/*"],
+            "@/components/*": ["src/components/*"],
+            "@/types/*": ["src/types/*"],
+            "@/router/*": ["src/router/*"],
+            "@/utils/*": ["src/utils/*"]
         }
     },
-    "include": [
-        "src/**/*",
-        "server.tsx"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "public"
-    ]
+    "include": ["src/**/*", "server.tsx"],
+    "exclude": ["node_modules", "dist", "public"]
 }

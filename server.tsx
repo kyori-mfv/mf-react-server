@@ -32,7 +32,7 @@ app.get("*", async (req, res) => {
 
     // Generate props based on route
     const initialProps: ServerInitialProps = {
-        page: req.path === "/" ? "home" : req.path.slice(1)
+        page: req.path === "/" ? "home" : req.path.slice(1),
     };
 
     const title = `React SSR Demo - ${pageInfo.title}`;

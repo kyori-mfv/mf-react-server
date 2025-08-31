@@ -12,8 +12,10 @@ export default function IndexPage(): JSX.Element {
     return (
         <div>
             <h1>Raw React SSR Demo</h1>
-            <p><b>Count:</b> {count}</p>
-            <button onClick={() => setCount(c => c + 1)}>Increment</button>
+            <p>
+                <b>Count:</b> {count}
+            </p>
+            <button onClick={() => setCount((c) => c + 1)}>Increment</button>
             <p>Hydrated: {hydrated ? "yes" : "no"}</p>
         </div>
     );

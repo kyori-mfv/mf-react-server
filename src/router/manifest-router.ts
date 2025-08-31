@@ -1,9 +1,11 @@
 // Router that uses the generated routes manifest
-import routesManifest from './routes-manifest.json';
-import { RoutesManifest, PageInfo, PageComponent } from '../types';
+import routesManifest from "./routes-manifest.json";
+import { RoutesManifest, PageInfo, PageComponent } from "../types";
 
 // Get page component for a route using aliases
-export function getPageComponent(routePath: string): Promise<{ default: PageComponent }> {
+export function getPageComponent(
+    routePath: string,
+): Promise<{ default: PageComponent }> {
     const manifest = routesManifest as RoutesManifest;
     const page = manifest.pages[routePath];
 
@@ -11,7 +13,7 @@ export function getPageComponent(routePath: string): Promise<{ default: PageComp
         throw new Error(`Page not found: ${routePath}`);
     }
 
-    console.log('Loading page:', page);
+    console.log("Loading page:", page);
 
     // Fallback to direct import
     return import(`@/pages/${page.component}`);
