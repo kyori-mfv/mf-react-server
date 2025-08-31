@@ -1,48 +1,43 @@
 {
-  "pages": {
-    "/": {
-      "component": "index.tsx",
-      "title": "Home",
-      "path": "/"
+    "pages": {
+        "/": {
+            "component": "index.tsx",
+            "title": "Home",
+            "path": "/"
+        },
+        "/contact": {
+            "component": "contact.tsx",
+            "title": "Contact",
+            "path": "/contact"
+        },
+        "/blog": {
+            "component": "blog.tsx",
+            "title": "Blog",
+            "path": "/blog"
+        },
+        "/about": {
+            "component": "about.tsx",
+            "title": "About",
+            "path": "/about"
+        }
     },
-    "/contact": {
-      "component": "contact.tsx",
-      "title": "Contact",
-      "path": "/contact"
-    },
-    "/blog": {
-      "component": "blog.tsx",
-      "title": "Blog",
-      "path": "/blog"
-    },
-    "/about": {
-      "component": "about.tsx",
-      "title": "About",
-      "path": "/about"
-    }
-  },
-  "routes": [
-    "/",
-    "/contact",
-    "/blog",
-    "/about"
-  ],
-  "navigation": [
-    {
-      "title": "Home",
-      "path": "/"
-    },
-    {
-      "title": "Contact",
-      "path": "/contact"
-    },
-    {
-      "title": "Blog",
-      "path": "/blog"
-    },
-    {
-      "title": "About",
-      "path": "/about"
-    }
-  ]
+    "routes": ["/", "/contact", "/blog", "/about"],
+    "navigation": [
+        {
+            "title": "Home",
+            "path": "/"
+        },
+        {
+            "title": "Contact",
+            "path": "/contact"
+        },
+        {
+            "title": "Blog",
+            "path": "/blog"
+        },
+        {
+            "title": "About",
+            "path": "/about"
+        }
+    ]
 }
