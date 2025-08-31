@@ -1,0 +1,42 @@
+{
+    "name": "react-server-from-cratch",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "discover": "node scripts/discover-pages.js",
+        "build:client": "webpack --config webpack.client.config.js",
+        "build:server": "webpack --config webpack.server.config.js",
+        "build": "npm run discover && npm run build:client && npm run build:server",
+        "start": "node dist/server.js",
+        "dev": "npm run build && npm run start",
+        "type-check": "tsc --noEmit",
+        "type-check:watch": "tsc --noEmit --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "express": "^4.21.2",
+        "fs-extra": "^11.3.1",
+        "glob": "^11.0.3",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.28.3",
+        "@babel/preset-env": "^7.28.3",
+        "@babel/preset-react": "^7.27.1",
+        "@babel/preset-typescript": "^7.23.3",
+        "@types/express": "^4.17.21",
+        "@types/fs-extra": "^11.0.4",
+        "@types/node": "^20.11.0",
+        "@types/react": "^18.2.48",
+        "@types/react-dom": "^18.2.18",
+        "babel-loader": "^10.0.0",
+        "babel-plugin-module-resolver": "^5.0.0",
+        "typescript": "^5.3.3",
+        "webpack": "^5.101.3",
+        "webpack-cli": "^6.0.1"
+    }
+}
