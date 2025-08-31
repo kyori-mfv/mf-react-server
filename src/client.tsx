@@ -1,12 +1,17 @@
 import { hydrateRoot } from "react-dom/client";
 import App from "./app";
-import { AppProps } from "./types";
+import { AppInitialProps } from "./types";
+import { getPageComponent } from "./router/manifest-router";
 
 declare global {
     interface Window {
-        __INITIAL_PROPS__: AppProps;
+        __INITIAL_PROPS__: AppInitialProps;
     }
 }
 
-const props: AppProps = window.__INITIAL_PROPS__;
-hydrateRoot(document.getElementById("root")!, <App {...props} />);
+const pageInfo = window.__INITIAL_PROPS__.pageInfo;
+const { default: pageComponent } = await getPageComponent(pageInfo.path);
+hydrateRoot(
+    document.getElementById("root")!,
+    <App pageComponent={pageComponent} pageInfo={pageInfo} />,
+);

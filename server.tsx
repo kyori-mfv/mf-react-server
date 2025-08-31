@@ -2,7 +2,8 @@ import express from "express";
 import { renderToString } from "react-dom/server";
 import App from "./src/app";
 import routesManifest from "@/router/routes-manifest.json";
-import { ServerInitialProps, RoutesManifest } from "./src/types";
+import { RoutesManifest } from "./src/types";
+import { getPageComponent } from "@/router/manifest-router";
 
 const app = express();
 const PORT = 5000;
@@ -30,14 +31,13 @@ app.get("*", async (req, res) => {
         `);
     }
 
-    // Generate props based on route
-    const initialProps: ServerInitialProps = {
-        page: req.path === "/" ? "home" : req.path.slice(1),
-    };
-
     const title = `React SSR Demo - ${pageInfo.title}`;
 
-    const appHTML = renderToString(<App {...initialProps} />);
+    const { default: page } = await getPageComponent(req.path);
+
+    const appHTML = renderToString(
+        <App pageComponent={page} pageInfo={pageInfo} />,
+    );
 
     // Embed props for hydration
     const html = `
@@ -49,7 +49,7 @@ app.get("*", async (req, res) => {
       <body>
         <div id="root">${appHTML}</div>
         <script>
-          window.__INITIAL_PROPS__ = ${JSON.stringify(initialProps)};
+          window.__INITIAL_PROPS__ = ${JSON.stringify({ pageInfo })};
         </script>
         <script src="/static/client.js" type="module"></script>
       </body>

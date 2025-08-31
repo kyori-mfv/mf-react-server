@@ -1,11 +1,11 @@
 // Router that uses the generated routes manifest
 import routesManifest from "./routes-manifest.json";
-import { RoutesManifest, PageInfo, PageComponent } from "../types";
+import { RoutesManifest, PageInfo } from "../types";
 
 // Get page component for a route using aliases
 export function getPageComponent(
     routePath: string,
-): Promise<{ default: PageComponent }> {
+): Promise<{ default: React.ComponentType }> {
     const manifest = routesManifest as RoutesManifest;
     const page = manifest.pages[routePath];
 

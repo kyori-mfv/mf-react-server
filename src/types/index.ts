@@ -15,17 +15,14 @@ export interface RoutesManifest {
     navigation: NavigationItem[];
 }
 
-export interface AppProps {
-    page: string;
+export interface AppInitialProps {
+    pageInfo: PageInfo;
 }
 
-export interface PageComponentProps {
-    [key: string]: unknown;
+export interface AppProps extends AppInitialProps {
+    pageComponent?: React.ComponentType;
 }
 
 export interface ServerInitialProps {
     page: string;
 }
-
-// Page component type
-export type PageComponent = React.ComponentType<PageComponentProps>;
